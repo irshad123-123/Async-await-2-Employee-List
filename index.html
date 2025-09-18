@@ -14,22 +14,28 @@
 </head>
 
 <body>
-    <h1 class="text-center p-3 bg-info">Employee DashBoard</h1>
-    <div class="container">
-        <div class="row my-4">
-            <button class="btn btn-primary ml-3">Add Employee</button>
+    <h1 class="text-center p-3">Employee DashBoard</h1>
+    <div class="container" id="main">
+        <div class="row my-4 ml-2" id="main">
+            <button type="button" id="showModal" class="btn btn-primary offset-2">Add Employee</button>
         </div>
+        <form id="searchForm">
+            <div class="form-group col-md-8 offset-md-2">
+                <label for="search">Search Employee</label>
+                <input placeholder="Search EID Number" id="search" class="form-control">
+            </div>
+        </form>
     </div>
-    <div class="backDrop" id="backDrop">
+    <div class="backDrop onToggle" id="backDrop">
 
     </div>
     <div class="empmodal" id="empmodal">
         <div class="card">
-            <div class="card-header d-flex justify-content-between">
+            <div class="card-header p-2 d-flex justify-content-between">
                 <h4>New Employee</h4>
-                <i class="fa-solid fa-xmark fa-2x" role="button"></i>
+                <i class="fa-solid fa-xmark fa-2x onToggle" role="button"></i>
             </div>
-            <div class="card-body">
+            <div class="card-body pt-0 pb-0 m-0">
                 <form id="empForm">
                     <div class="form-group">
                         <label for="EID">EID</label>
@@ -45,19 +51,12 @@
                     </div>
                     <div class="form-group">
                         <label for="city">City</label>
-                        <select id="city" class="form-control">
-                            <option value="select">Select</option>
-                            <option value="mumbai">Mumbai</option>
-                            <option value="hydrabad">Hydrabad</option>
-                            <option value="pune">Pune</option>
-                            <option value="indore">Indore</option>
-                            <option value="delhi">Delhi</option>
-                        </select>
+                        <input id="city" class="form-control">
                     </div>
-                    <div class="text-right">
-                        <button type="submit" class="btn btn-primary">Save</button>
-                        <button type="button" class="btn btn-primary d-none">Update</button>
-                        <button type="button" class="btn btn-primary btn-danger">Close</button>
+                    <div class="text-right pb-2">
+                        <button id="addEmp" type="submit" class="btn btn-primary">Add Employee</button>
+                        <button id="updateEmp" type="button" class="btn btn-primary d-none">Update Employee</button>
+                        <button type="button" class="btn btn-primary btn-danger onToggle">Close</button>
                     </div>
                 </form>
             </div>
@@ -65,7 +64,7 @@
     </div>
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-8 offset-md-2 table-responsive">
                 <table class="table table-bordered bg-white text-center">
                     <thead>
                         <tr>
@@ -77,21 +76,30 @@
                             <th>Remove</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
+                    <tbody id="empContainer">
+                        <!-- <tr>
                             <td>102</td>
                             <td>Irshad</td>
                             <td>Development</td>
                             <td>Udgir</td>
                             <td><i class="fa-solid fa-user-pen text-success fa-2x" role="button"></i></td>
                             <td><i class="fa-solid fa-trash text-danger fa-2x" role="button"></i></td>
-                        </tr>
+                        </tr> -->
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
+    <div class="loader d-none" id="loader">
+        <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <div class="arrow" id="arrow">
+        <i class="fa-solid fa-arrow-up fa-2x"></i>
+    </div>
     <script src="./assets/js/app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>
